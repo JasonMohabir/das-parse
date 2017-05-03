@@ -1,0 +1,21 @@
+raw = open("Beyond_Good_and_Evil.txt", "r").read().lower().strip().split()
+
+def f_single(word):
+   list_single_word = filter(lambda x: x == word, raw)
+  
+   return len(list_single_word)
+
+def f_phrase(words):
+   list_words = filter(lambda x: x in words, raw)
+   return len(list_words)
+
+
+def most_frequent():
+   word = reduce( lambda x, y: x if f_single(x) >= f_single(y) else y, raw )
+   return word
+
+print f_single("Good")
+print f_single("Evil")
+print f_phrase(["What","is"])
+
+print most_frequent()
